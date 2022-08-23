@@ -9,7 +9,6 @@ about: Create a report, help us improve
 
 **What is the current behavior?**
 
-
 **If the current behavior is a bug, please provide the steps to reproduce.**
 
 <!-- The most helpful is a minimal reproduction with instructions on how to reproduce -->
@@ -19,12 +18,11 @@ about: Create a report, help us improve
 
 **What is the expected behavior?**
 
-
 <!-- "It should work" is not a helpful explanation -->
 <!-- Explain exactly how it should behave -->
 
-**Other relevant information:** 
-Operating System: 
+**Other relevant information:**
+Operating System:
 Additional tools:
 
-<img src="https://raw.githubusercontent.com/juliantellez/up/master/assets/up.png" height="200">
+<img src="https://raw.githubusercontent.com/stangahh/up/master/assets/up.png" height="200">

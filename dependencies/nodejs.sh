@@ -2,11 +2,11 @@
 
 . $(pwd)/helpers/print.sh
 
-install_nodejs(){
+install_nodejs() {
     local dir=$HOME/.nvm/nvm.sh
 
     if ! [[ -f $dir ]]; then
-        curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
         print_success "NVM installed"
 
         install_node_version
@@ -17,7 +17,7 @@ install_nodejs(){
 
 install_node_version() {
     export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
     print_info "Installing latest Node"
     nvm install node

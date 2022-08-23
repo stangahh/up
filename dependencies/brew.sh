@@ -6,7 +6,7 @@
 
 install_home_brew() {
     if ! [ -x "$(command -v brew)" ]; then
-        curl -fsS 'https://raw.githubusercontent.com/Homebrew/install/master/install' | ruby
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
         export PATH="/usr/local/bin:$PATH"
 
         print_success "Homebrew installed."
@@ -42,7 +42,7 @@ install_cask() {
 }
 
 tap_cask() {
-    if [[ ! $(brew list --cask| grep $1) ]]; then
+    if [[ ! $(brew list --cask | grep $1) ]]; then
         print_info "Tapping cask $1"
         brew tap $1 >/dev/null
         print_success "${bold} ✓ tapped. ${normal}"
@@ -51,7 +51,7 @@ tap_cask() {
     fi
 }
 
-install_brew_packages(){
+install_brew_packages() {
     # Update the brew “registry”, and install the latest versions.
     brew update >/dev/null
 
@@ -60,10 +60,10 @@ install_brew_packages(){
             print_info "Installing ${package}"
 
             case $1 in
-            ("brew") install_brew $package;;
-        ("cask") install_cask $package;;
-    ("tap") tap_cask $package;;
-    esac
+            "brew") install_brew $package ;;
+            "cask") install_cask $package ;;
+            "tap") tap_cask $package ;;
+            esac
         done
 
     else

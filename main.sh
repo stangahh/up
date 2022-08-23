@@ -1,14 +1,11 @@
 #!/bin/bash
 
 . $(pwd)/dependencies/brew.sh
-. $(pwd)/dependencies/fzf.sh
 . $(pwd)/dependencies/git.sh
 . $(pwd)/dependencies/mac.sh
 . $(pwd)/dependencies/iterm2.sh
 . $(pwd)/dependencies/nodejs.sh
-. $(pwd)/dependencies/nvim.sh
 . $(pwd)/dependencies/zsh/autocomplete.sh
-. $(pwd)/dependencies/zsh/powerlevel9k.sh
 . $(pwd)/dependencies/zsh/syntax_highlight.sh
 . $(pwd)/dependencies/xcode.sh
 . $(pwd)/dependencies/zsh.sh
@@ -19,12 +16,12 @@
 
 . $(pwd)/utils/spinner.sh
 
-steps(){
+steps() {
     step "Check: Internet connection"
     test_internet_connection
 
-    step "Setup: XCode"
-    install_xcode
+    step "Setup: XCode CLI Tools"
+    install_xcode_cli_tools
 
     step "Install: HomeBrew"
     install_home_brew
@@ -38,9 +35,6 @@ steps(){
     step "Install: Casks"
     install_brew_packages "cask" $(pwd)/packages/casks.txt
 
-    step "Install: FZF fuzzy search"
-    install_fzf
-
     step "Install: Nodejs"
     install_nodejs
 
@@ -48,7 +42,6 @@ steps(){
     install_zsh
 
     step "Install: Zsh plugins"
-    install_powerlevel9k
     install_syntax_highlight
     install_autocomplete
 
@@ -62,16 +55,12 @@ steps(){
     create_iterm2_configuration $(pwd)/config/iterm.json
 
     step "Config: Fetch iterm2 color presets"
-    fetch_iterm2_color_preset Ciapre.itermcolors
-    fetch_iterm2_color_preset FrontEndDelight.itermcolors
-    fetch_iterm2_color_preset BirdsOfParadise.itermcolors
+    fetch_iterm2_color_preset AdventureTime.itermcolors
+    fetch_iterm2_color_preset DimmedMonokai.itermcolors
+    fetch_iterm2_color_preset Wombat.itermcolors
 
     step "Config: Copy zshrc"
     copy_zsh_configuration $(pwd)/config/.zshrc
-
-    step "Config: nvim"
-    install_vim_plug
-    copy_vim_plug_configuration $(pwd)/config/nvim/init.vim
 
     step "Config: mac"
     configure_mac

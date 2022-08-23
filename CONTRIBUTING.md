@@ -7,8 +7,7 @@ work is not in vain.
 
 ## Issues
 
-**If you have discovered a bug or have a feature suggestion, please [create an issue on GitHub](https://github.com/juliantellez/up/issues/new).**
-
+**If you have discovered a bug or have a feature suggestion, please [create an issue on GitHub](https://github.com/stangahh/up/issues/new).**
 
 ## Contributing to the ecosystem
 
@@ -18,5 +17,5 @@ If you have added a new dependency please open a PR to include it in the README.
 
 Something that will increase the chance that your pull request is accepted:
 
-* Follow the existing coding style
-* Write a [good commit message](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
+- Follow the existing coding style
+- Write a [good commit message](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)

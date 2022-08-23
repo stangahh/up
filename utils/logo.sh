@@ -4,7 +4,7 @@
 . $(pwd)/utils/styles.sh
 
 logo() {
-printf "
+   printf "
 ${color_yellow}
 ╭───────────────────────────────────────────────────╮
 |                                                   |
@@ -19,7 +19,7 @@ ${color_yellow}
                    ...in no time
 
         Install dependencies with little effort.
-           https://github.com/juliantellez/up
+           https://github.com/stangahh/up
 
 Version: ${UP_VERSION}
 ${font_reset}

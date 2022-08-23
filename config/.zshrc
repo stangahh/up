@@ -1,14 +1,16 @@
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
+
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 . `brew --prefix`/etc/profile.d/z.sh
 
-export ZSH=$HOME/.oh-my-zsh
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
 
-POWERLEVEL9K_MODE="nerdfont-complete"
-ZSH_THEME="powerlevel9k/powerlevel9k"
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir_writable dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status nvm node_version background_jobs history)
+ZSH_THEME="spaceship"
+
 DISABLE_MAGIC_FUNCTIONS=true
 
 plugins=(
@@ -19,9 +21,16 @@ plugins=(
     npm
     zsh-syntax-highlighting
     zsh-completions
+    ssh-agent
+    gpg-agent
+    z
+    dotenv
+    brew
+    fzf
+    asdf
 )
 
-# Reloading compleition #
+# Reloading completion #
 # see: https://gist.github.com/ctechols/ca1035271ad134841284#gistcomment-2308206
 ###################
 
@@ -34,7 +43,7 @@ done
 compinit -C
 
 
-# OHMY-ZSH #
+# Load Oh My Zsh #
 ###################
 source $ZSH/oh-my-zsh.sh
 
@@ -70,16 +79,10 @@ npx() {
     npx $@
 }
 
-# AVN #
-###################
-[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh"
-
 # AWS #
 ##################
 complete -C $(which aws_completer) aws # tab compleition
 
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 #
 # AWS USER SWITCH
@@ -95,7 +98,7 @@ function aws-user () {
         echo "specify AWS user";
         return;
     fi
-    
+
     exists="$(aws configure get aws_access_key_id --profile $1)"
     if [[ -n $exists ]]; then
         export AWS_DEFAULT_PROFILE=$1;
@@ -107,7 +110,30 @@ function aws-user () {
 }
 
 #
+# Exports
+#
+##################
+export GPG_TTY=$(tty)
+
+#
+# Aliases
+#
+##################
+alias reload="source ~/.zshrc"
+alias aliases="cat ~/.zshrc | grep 'alias '"
+alias ll="ls -alF"
+alias me="aws sts get-caller-identity"
+alias identity='aws sts get-caller-identity'
+alias kbprd='kubectl --context=production-us-east-1'
+alias kbstg='kubectl --context=staging-us-east-1'
+alias gitstatusall="find . -maxdepth 1 -mindepth 1 -type d -exec sh -c '(echo {} && cd {} && git status -s && echo)' \;"
+alias dps="docker-pretty-ps -i=ips"
+
+#
 # Kubernetes
 #
 ##################
 source <(kubectl completion zsh) # tab compleition
+
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
