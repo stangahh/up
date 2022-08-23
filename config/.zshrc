@@ -124,8 +124,6 @@ alias aliases="cat ~/.zshrc | grep 'alias '"
 alias ll="ls -alF"
 alias me="aws sts get-caller-identity"
 alias identity='aws sts get-caller-identity'
-alias kbprd='kubectl --context=production-us-east-1'
-alias kbstg='kubectl --context=staging-us-east-1'
 alias gitstatusall="find . -maxdepth 1 -mindepth 1 -type d -exec sh -c '(echo {} && cd {} && git status -s && echo)' \;"
 alias dps="docker-pretty-ps -i=ips"
 
