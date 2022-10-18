@@ -917,6 +917,15 @@ defaults write com.apple.systemuiserver menuExtras -array \
 defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.volume" -bool true
 defaults write com.apple.menuextra.clock DateFormat -string "EEE d MMM HH:mm:ss"
 
+
+###############################################################################
+# Install custom global keybinds                                              #
+###############################################################################
+
+mkdir -p $HOME/Library/KeyBindings
+
+cp -f ./DefaultKeyBinding.dict $HOME/Library/KeyBindings/DefaultKeyBinding.dict
+
 ###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
@@ -942,4 +951,5 @@ for app in "Activity Monitor" \
     "iCal"; do
     killall "${app}" &>/dev/null
 done
+
 echo "Done. Note that some of these changes require a logout/restart to take effect."
